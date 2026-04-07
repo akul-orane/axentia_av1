@@ -1,0 +1,27 @@
+{
+  "sap.app": {
+    "id": "com.demo.fioriapp",
+    "type": "application"
+  },
+  "sap.ui5": {
+    "models": {
+      "": {
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "useBatch": true
+        },
+        "dataSource": "mainService"
+      }
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/API_BUSINESS_PARTNER/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  }
+}

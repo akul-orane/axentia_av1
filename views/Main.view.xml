@@ -1,0 +1,30 @@
+<mvc:View
+  controllerName="com.demo.fioriapp.controller.Main"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+
+  <Page title="Business Partners">
+    <content>
+      <Table id="bpTable" items="{/A_BusinessPartner}">
+        <columns>
+          <Column>
+            <Text text="ID" />
+          </Column>
+          <Column>
+            <Text text="Name" />
+          </Column>
+        </columns>
+
+        <items>
+          <ColumnListItem>
+            <cells>
+              <Text text="{BusinessPartner}" />
+              <Text text="{BusinessPartnerFullName}" />
+            </cells>
+          </ColumnListItem>
+        </items>
+      </Table>
+    </content>
+  </Page>
+
+</mvc:View>

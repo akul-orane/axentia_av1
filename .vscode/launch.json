@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Local Agent",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/app/main.py",
+      "console": "integratedTerminal",
+      "args": [
+        "--host",
+        "${config:codeBasedAgent.agentHost}",
+        "--port",
+        "${config:codeBasedAgent.agentPort}"
+      ],
+      "env": {
+        "DESTINATION_CLIENT_ID": "sb-clonee7e9c708e60e4708874c43c0d6bdf0b5!b1279543|destination-xsappname!b9",
+        "DESTINATION_CLIENT_SECRET": "e2b3f645-0da4-4667-872a-35dad7dd569b$pRNsGjLX3Jkf7_ryJUJmqmKlAzuSOdXTAhsUEipjFE8=",
+        "DESTINATION_AUTH_URL": "https://sbpa-agent-team-joule.authentication.eu12.hana.ondemand.com",
+        "DESTINATION_URI": "https://destination-configuration.cfapps.eu12.hana.ondemand.com"
+      },
+      "envFile": "${workspaceFolder}/app/.env"
+    }
+  ]
+}
