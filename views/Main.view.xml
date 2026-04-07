@@ -1,30 +1,81 @@
 <mvc:View
   controllerName="com.demo.fioriapp.controller.Main"
   xmlns:mvc="sap.ui.core.mvc"
-  xmlns="sap.m">
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core">
 
-  <Page title="Business Partners">
+  <Page id="mainPage" title="Business Partners - OData Demo" showHeader="true">
+    <subHeader>
+      <Toolbar>
+        <SearchField
+          id="searchField"
+          placeholder="Search by ID or Name..."
+          width="30%"
+          liveChange="onSearch" />
+        <ToolbarSpacer />
+        <Button
+          text="Refresh"
+          icon="sap-icon://refresh"
+          press="onRefresh" />
+      </Toolbar>
+    </subHeader>
+
     <content>
-      <Table id="bpTable" items="{/A_BusinessPartner}">
+      <Table
+        id="bpTable"
+        items="{/A_BusinessPartner}"
+        growing="true"
+        growingThreshold="20"
+        growingScrollToLoad="true"
+        noDataText="No Business Partners found">
+        <headerToolbar>
+          <Toolbar>
+            <Title text="Business Partners List" level="H2" />
+            <ToolbarSpacer />
+            <Label text="Showing {=${/A_BusinessPartner}.length || 0} partners" design="Bold" />
+          </Toolbar>
+        </headerToolbar>
         <columns>
-          <Column>
-            <Text text="ID" />
+          <Column width="12rem">
+            <Text text="Business Partner ID" />
           </Column>
-          <Column>
-            <Text text="Name" />
+          <Column width="auto">
+            <Text text="Full Name" />
+          </Column>
+          <Column width="auto">
+            <Text text="Company" />
+          </Column>
+          <Column width="15rem">
+            <Text text="Email" />
+          </Column>
+          <Column width="12rem">
+            <Text text="Phone" />
           </Column>
         </columns>
-
         <items>
-          <ColumnListItem>
+          <ColumnListItem type="Active" press="onItemPress">
             <cells>
-              <Text text="{BusinessPartner}" />
+              <ObjectIdentifier title="{BusinessPartner}" />
               <Text text="{BusinessPartnerFullName}" />
+              <Text text="{OrganizationBPName1}" />
+              <Text text="{to_BusinessPartnerEmailAddress/0/EmailAddress}" />
+              <Text text="{to_BusinessPartnerPhoneNumber/0/PhoneNumber}" />
             </cells>
           </ColumnListItem>
         </items>
       </Table>
     </content>
+
+    <footer>
+      <Toolbar>
+        <ToolbarSpacer />
+        <Button
+          text="Create New"
+          type="Emphasized"
+          icon="sap-icon://add"
+          press="onCreatePress" />
+      </Toolbar>
+    </footer>
   </Page>
 
 </mvc:View>

@@ -1,15 +1,33 @@
 {
   "sap.app": {
     "id": "com.demo.fioriapp",
-    "type": "application"
+    "type": "application",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "Business Partners",
+    "description": "Fiori application consuming standard SAP OData service API_BUSINESS_PARTNER"
   },
   "sap.ui5": {
+    "rootView": {
+      "viewName": "com.demo.fioriapp.view.Main",
+      "type": "XML",
+      "id": "mainView"
+    },
+    "dependencies": {
+      "minUI5Version": "1.71.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
     "models": {
       "": {
         "type": "sap.ui.model.odata.v2.ODataModel",
         "settings": {
           "defaultBindingMode": "TwoWay",
-          "useBatch": true
+          "useBatch": true,
+          "refreshAfterChange": true
         },
         "dataSource": "mainService"
       }
@@ -19,9 +37,14 @@
         "uri": "/sap/opu/odata/sap/API_BUSINESS_PARTNER/",
         "type": "OData",
         "settings": {
-          "odataVersion": "2.0"
+          "odataVersion": "2.0",
+          "localUri": "localService/metadata.xml"
         }
       }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
     }
   }
 }
