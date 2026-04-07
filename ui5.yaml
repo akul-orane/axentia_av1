@@ -9,19 +9,7 @@ framework:
     - name: sap.m
     - name: sap.ui.core
     - name: sap.ui.layout
-builder:
-  customTasks:
-    - name: ui5-tooling-transpile
-      afterTask: replaceVersion
-      configuration:
-        debug: true
-server:
-  customMiddleware:
-    - name: ui5-middleware-simpleproxy
-      mountPath: /sap
-      afterMiddleware: compression
-      configuration:
-        baseUri: "https://your-s4-system-url.com"
-        httpHeaders:
-          "X-CSRF-Token": "Fetch"
-        limit: 1000mb
+resources:
+  configuration:
+    paths:
+      webapp: .
