@@ -2,6 +2,32 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Preview index.html",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:8080/index.html",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "ui5-serve"
+    },
+    {
+      "name": "Run Fiori App (index.html)",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/@ui5/cli/bin/ui5.js",
+      "args": [
+        "serve",
+        "--config",
+        "ui5.yaml",
+        "--open",
+        "index.html"
+      ],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
       "name": "Run Local Agent",
       "type": "debugpy",
       "request": "launch",

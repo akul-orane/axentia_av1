@@ -1,0 +1,13 @@
+{
+  "name": "fiori-business-partner-app",
+  "version": "1.0.0",
+  "description": "Fiori app consuming API_BUSINESS_PARTNER OData service",
+  "scripts": {
+    "start": "ui5 serve --config ui5.yaml --open index.html",
+    "start-local": "ui5 serve --config ui5.yaml --open index.html",
+    "build": "ui5 build --clean-dest"
+  },
+  "devDependencies": {
+    "@ui5/cli": "^3.0.0"
+  }
+}
