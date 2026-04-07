@@ -4,12 +4,12 @@
   xmlns="sap.m"
   xmlns:core="sap.ui.core">
 
-      <Page id="mainPage" title="Z_CDS_AKULPRACT - OData App" showHeader="true">
+  <Page id="mainPage" title="Z_CDS_AKULPRACT - OData App" showHeader="true">
     <subHeader>
       <Toolbar>
         <SearchField
           id="searchField"
-          placeholder="Search by ID or Name..."
+          placeholder="Search..."
           width="30%"
           liveChange="onSearch" />
         <ToolbarSpacer />
@@ -27,35 +27,47 @@
         growing="true"
         growingThreshold="30"
         growingScrollToLoad="true"
-        noDataText="No data found. Check console for errors.">
+        noDataText="No data found. Check console or error message.">
         <headerToolbar>
           <Toolbar>
-            <Title text="Z_CDS_AKULPRACT Data" level="H2" />
+            <Title text="CDS View Data (Z_CDS_AKULPRACT)" level="H2" />
             <ToolbarSpacer />
             <Label text="Showing {=${/Z_CDS_AKULPRACT}.length || 0} records" design="Bold" />
           </Toolbar>
         </headerToolbar>
         <columns>
           <Column width="10rem">
-            <Text text="ID" />
+            <Text text="Billing Document" />
+          </Column>
+          <Column width="6rem">
+            <Text text="Item" />
           </Column>
           <Column width="auto" minScreenWidth="Tablet" demandPopin="true">
-            <Text text="Name / Description" />
+            <Text text="Customer" />
+          </Column>
+          <Column width="auto">
+            <Text text="Material" />
           </Column>
           <Column width="12rem">
-            <Text text="Status" />
+            <Text text="Material Description" />
           </Column>
-          <Column width="10rem">
-            <Text text="Date" />
+          <Column width="8rem" hAlign="End">
+            <Text text="Quantity" />
+          </Column>
+          <Column width="8rem" hAlign="End">
+            <Text text="Net Revenue" />
           </Column>
         </columns>
         <items>
           <ColumnListItem type="Active" press="onItemPress">
             <cells>
-              <ObjectIdentifier title="{ID}" />
-              <Text text="{Name}" />
-              <Text text="{Status}" />
-              <Text text="{Date}" />
+              <Text text="{BillingDocument}" />
+              <Text text="{BillingItem}" />
+              <Text text="{Customer} - {CustomerName}" />
+              <Text text="{Material}" />
+              <Text text="{MaterialDescription}" />
+              <Text text="{BillingQuantity} {BillingUoM}" />
+              <Text text="{NetRevenue} {Currency}" />
             </cells>
           </ColumnListItem>
         </items>
@@ -66,10 +78,10 @@
       <Toolbar>
         <ToolbarSpacer />
         <Button
-          text="Create New"
+          text="Refresh Data"
           type="Emphasized"
-          icon="sap-icon://add"
-          press="onCreatePress" />
+          icon="sap-icon://refresh"
+          press="onRefresh" />
       </Toolbar>
     </footer>
   </Page>

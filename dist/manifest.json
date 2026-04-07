@@ -5,8 +5,17 @@
     "applicationVersion": {
       "version": "1.0.0"
     },
-    "title": "Business Partners",
-    "description": "Fiori application consuming standard SAP OData service API_BUSINESS_PARTNER"
+    "title": "Z_CDS_AKULPRACT",
+    "description": "Fiori application consuming custom CDS OData service",
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/Z_CDS_AKULPRACT_CDS/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      }
+    }
   },
   "sap.ui5": {
     "rootView": {
@@ -18,7 +27,8 @@
       "minUI5Version": "1.71.0",
       "libs": {
         "sap.m": {},
-        "sap.ui.core": {}
+        "sap.ui.core": {},
+        "sap.ui.layout": {}
       }
     },
     "models": {

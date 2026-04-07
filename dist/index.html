@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Business Partners - Fiori OData App</title>
+  <title>Z_CDS_AKULPRACT - OData App</title>
 
   <script
     id="sap-ui-bootstrap"
@@ -29,13 +29,20 @@
   </style>
 
   <script>
-    sap.ui.getCore().attachInit(function () {
-      new sap.ui.core.ComponentContainer({
+    sap.ui.getCore().attachInit(async function () {
+      // Use asynchronous Component.create() to avoid deprecation warning for synchronous loading of routing classes
+      const oComponent = await sap.ui.core.Component.create({
         name: "com.demo.fioriapp",
-        height: "100%",
+        id: "mainComponent",
         settings: {
-          width: "100%"
+          // width/height on Component itself is not supported - use CSS on container instead
         }
+      });
+
+      new sap.ui.core.ComponentContainer({
+        component: oComponent,
+        height: "100%",
+        width: "100%"  // moved to ComponentContainer (valid property)
       }).placeAt("content");
     });
   </script>

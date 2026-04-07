@@ -6,6 +6,7 @@
     "build": "ui5 build --clean-dest"
   },
   "devDependencies": {
-    "@ui5/cli": "^3.11.0"
+    "@ui5/cli": "^3.11.0",
+    "ui5-middleware-simpleproxy": "^3.2.1"
   }
 }

@@ -1,0 +1,59 @@
+{
+  "sap.app": {
+    "id": "com.demo.fioriapp",
+    "type": "application",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "Z_CDS_AKULPRACT",
+    "description": "Fiori application consuming custom CDS OData service",
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/Z_CDS_AKULPRACT_CDS/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "com.demo.fioriapp.view.Main",
+      "type": "XML",
+      "id": "mainView"
+    },
+    "dependencies": {
+      "minUI5Version": "1.71.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "models": {
+      "": {
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "useBatch": true,
+          "refreshAfterChange": true
+        },
+        "dataSource": "mainService"
+      }
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/Z_CDS_AKULPRACT_CDS/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    }
+  }
+}
