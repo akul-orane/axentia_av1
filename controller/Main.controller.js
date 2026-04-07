@@ -13,13 +13,10 @@ sap.ui.define([
       var oModel = this.getView().getModel();
       this._oModel = oModel;
 
-      // Set default parameters for better performance
       oModel.setSizeLimit(1000);
-
-      // Attach error handler for the model
       oModel.attachRequestFailed(this.onModelError.bind(this));
 
-      MessageToast.show("Loading Business Partners from OData service...");
+      MessageToast.show("Connecting to Z_CDS_AKULPRACT_CDS service...");
     },
 
     onSearch: function (oEvent) {
@@ -73,12 +70,19 @@ sap.ui.define([
     },
 
     onModelError: function (oEvent) {
-      var oError = oEvent.getParameter("message");
-      var sDetails = oEvent.getParameter("response") ? oEvent.getParameter("response").statusCode + " - " + oEvent.getParameter("response").statusText : "";
+      var oError = oEvent.getParameter("message") || "Unknown error";
+      var oResponse = oEvent.getParameter("response");
+      var sDetails = oResponse ? 
+        (oResponse.statusCode || "") + " " + (oResponse.statusText || "") : "";
 
-      MessageBox.error("OData Service Error:\n\n" + oError + "\n\n" + sDetails, {
-        title: "Connection Issue",
-        details: "Please check:\n1. Your SAP system is running\n2. The service /sap/opu/odata/sap/API_BUSINESS_PARTNER/ is active\n3. You are logged in with proper authorizations\n4. The OData URI in manifest.json is correct"
+      MessageBox.error("Failed to load data from OData service", {
+        title: "OData Error",
+        details: "URL: https://npsap01.namdhariseeds.com:44310/sap/opu/odata/sap/Z_CDS_AKULPRACT_CDS/\n\n" +
+                 "Error: " + oError + "\n" + sDetails + "\n\n" +
+                 "Check:\n" +
+                 "• You are on the company network / VPN\n" +
+                 "• The service Z_CDS_AKULPRACT_CDS is active\n" +
+                 "• You have proper authorizations on the CDS view"
       });
     }
 

@@ -34,11 +34,10 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/sap/opu/odata/sap/API_BUSINESS_PARTNER/",
+        "uri": "/sap/opu/odata/sap/Z_CDS_AKULPRACT_CDS/",
         "type": "OData",
         "settings": {
-          "odataVersion": "2.0",
-          "localUri": "localService/metadata.xml"
+          "odataVersion": "2.0"
         }
       }
     },

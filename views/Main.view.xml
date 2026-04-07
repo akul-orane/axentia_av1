@@ -4,7 +4,7 @@
   xmlns="sap.m"
   xmlns:core="sap.ui.core">
 
-  <Page id="mainPage" title="Business Partners - OData Demo" showHeader="true">
+      <Page id="mainPage" title="Z_CDS_AKULPRACT - OData App" showHeader="true">
     <subHeader>
       <Toolbar>
         <SearchField
@@ -22,44 +22,40 @@
 
     <content>
       <Table
-        id="bpTable"
-        items="{/A_BusinessPartner}"
+        id="mainTable"
+        items="{/Z_CDS_AKULPRACT}"
         growing="true"
-        growingThreshold="20"
+        growingThreshold="30"
         growingScrollToLoad="true"
-        noDataText="No Business Partners found">
+        noDataText="No data found. Check console for errors.">
         <headerToolbar>
           <Toolbar>
-            <Title text="Business Partners List" level="H2" />
+            <Title text="Z_CDS_AKULPRACT Data" level="H2" />
             <ToolbarSpacer />
-            <Label text="Showing {=${/A_BusinessPartner}.length || 0} partners" design="Bold" />
+            <Label text="Showing {=${/Z_CDS_AKULPRACT}.length || 0} records" design="Bold" />
           </Toolbar>
         </headerToolbar>
         <columns>
-          <Column width="12rem">
-            <Text text="Business Partner ID" />
+          <Column width="10rem">
+            <Text text="ID" />
           </Column>
-          <Column width="auto">
-            <Text text="Full Name" />
-          </Column>
-          <Column width="auto">
-            <Text text="Company" />
-          </Column>
-          <Column width="15rem">
-            <Text text="Email" />
+          <Column width="auto" minScreenWidth="Tablet" demandPopin="true">
+            <Text text="Name / Description" />
           </Column>
           <Column width="12rem">
-            <Text text="Phone" />
+            <Text text="Status" />
+          </Column>
+          <Column width="10rem">
+            <Text text="Date" />
           </Column>
         </columns>
         <items>
           <ColumnListItem type="Active" press="onItemPress">
             <cells>
-              <ObjectIdentifier title="{BusinessPartner}" />
-              <Text text="{BusinessPartnerFullName}" />
-              <Text text="{OrganizationBPName1}" />
-              <Text text="{to_BusinessPartnerEmailAddress/0/EmailAddress}" />
-              <Text text="{to_BusinessPartnerPhoneNumber/0/PhoneNumber}" />
+              <ObjectIdentifier title="{ID}" />
+              <Text text="{Name}" />
+              <Text text="{Status}" />
+              <Text text="{Date}" />
             </cells>
           </ColumnListItem>
         </items>
